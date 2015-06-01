@@ -17,11 +17,9 @@ public class JanelaCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblCadastroDeClientes;
-	private JLabel lblCdigo;
 	private JLabel lblNome;
 	private JLabel lblTelefone;
 	private JLabel lblEndereo;
-	private JTextField tfCod;
 	private JTextField tfNome;
 	private JTextField tfTelefone;
 	private JTextField tfEndereço;
@@ -41,16 +39,16 @@ public class JanelaCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLblCadastroDeClientes());
-		contentPane.add(getLblCdigo());
 		contentPane.add(getLblNome());
 		contentPane.add(getLblTelefone());
 		contentPane.add(getLblEndereo());
-		contentPane.add(getTfCod());
 		contentPane.add(getTfNome());
 		contentPane.add(getTfTelefone());
 		contentPane.add(getTfEndereço());
 		contentPane.add(getBtnCadastrar());
 		contentPane.add(getBtnVoltar());
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 
 	private JLabel getLblCadastroDeClientes() {
@@ -61,14 +59,6 @@ public class JanelaCliente extends JFrame {
 			lblCadastroDeClientes.setBounds(113, 11, 212, 63);
 		}
 		return lblCadastroDeClientes;
-	}
-
-	private JLabel getLblCdigo() {
-		if (lblCdigo == null) {
-			lblCdigo = new JLabel("C\u00F3digo: ");
-			lblCdigo.setBounds(32, 70, 46, 14);
-		}
-		return lblCdigo;
 	}
 
 	private JLabel getLblNome() {
@@ -93,15 +83,6 @@ public class JanelaCliente extends JFrame {
 			lblEndereo.setBounds(32, 160, 88, 14);
 		}
 		return lblEndereo;
-	}
-
-	private JTextField getTfCod() {
-		if (tfCod == null) {
-			tfCod = new JTextField();
-			tfCod.setBounds(97, 70, 327, 20);
-			tfCod.setColumns(10);
-		}
-		return tfCod;
 	}
 
 	private JTextField getTfNome() {
@@ -136,14 +117,14 @@ public class JanelaCliente extends JFrame {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					int codigo = Integer.parseInt(getTfCod().getText());
+					
 					String nome = getTfNome().getText();
 					String telefone = getTfTelefone().getText();
 					String endereço = getTfEndereço().getText();
 					
 					JOptionPane.showMessageDialog(
 							null,
-							parente.getCtrlClientes().inserirCliente(codigo,nome, telefone, endereço));
+							parente.getCtrlClientes().inserirCliente(nome, telefone, endereço));
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);

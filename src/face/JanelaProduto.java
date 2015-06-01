@@ -22,10 +22,8 @@ public class JanelaProduto extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblCadastroDeProdutos;
-	private JLabel lblCdigo;
 	private JLabel lblNome;
-	private JLabel lblPreÃ§o;
-	private JTextField tfCod;
+	private JLabel lblPreço;
 	private JTextField tfNome;
 	private JTextField tfTelefone;
 	private JButton btnCadastrar;
@@ -47,10 +45,8 @@ public class JanelaProduto extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLblCadastroDeProdutos());
-		contentPane.add(getLblCdigo());
 		contentPane.add(getLblNome());
-		contentPane.add(getLblPreÃ§o());
-		contentPane.add(getTfCod());
+		contentPane.add(getLblPreço());
 		contentPane.add(getTfNome());
 		contentPane.add(getTfTelefone());
 		contentPane.add(getBtnCadastrar());
@@ -59,6 +55,7 @@ public class JanelaProduto extends JFrame {
 		contentPane.add(getLblFornecedor());
 		contentPane.add(getCbFornecedor());
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 
 	private JLabel getLblCadastroDeProdutos() {
@@ -71,14 +68,6 @@ public class JanelaProduto extends JFrame {
 		return lblCadastroDeProdutos;
 	}
 
-	private JLabel getLblCdigo() {
-		if (lblCdigo == null) {
-			lblCdigo = new JLabel("C\u00F3digo: ");
-			lblCdigo.setBounds(32, 70, 69, 14);
-		}
-		return lblCdigo;
-	}
-
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome: ");
@@ -87,21 +76,12 @@ public class JanelaProduto extends JFrame {
 		return lblNome;
 	}
 
-	private JLabel getLblPreÃ§o() {
-		if (lblPreÃ§o == null) {
-			lblPreÃ§o = new JLabel("Pre\u00E7o: ");
-			lblPreÃ§o.setBounds(32, 130, 106, 14);
+	private JLabel getLblPreço() {
+		if (lblPreço == null) {
+			lblPreço = new JLabel("Pre\u00E7o: ");
+			lblPreço.setBounds(32, 130, 106, 14);
 		}
-		return lblPreÃ§o;
-	}
-
-	private JTextField getTfCod() {
-		if (tfCod == null) {
-			tfCod = new JTextField();
-			tfCod.setBounds(97, 70, 327, 20);
-			tfCod.setColumns(10);
-		}
-		return tfCod;
+		return lblPreço;
 	}
 
 	private JTextField getTfNome() {
@@ -127,16 +107,16 @@ public class JanelaProduto extends JFrame {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					int codigo = Integer.parseInt(getTfCod().getText());
+					
 					String nome = getTfNome().getText();
-					float preÃ§o = Float.parseFloat(getTfTelefone().getText());
+					float preço = Float.parseFloat(getTfTelefone().getText());
 					boolean esobremesa = Boolean.parseBoolean(getRdSobremesa().getText());
 					Fornecedor fornecedor = parente.getCtrlFornecedores().getFornecedor(getCbFornecedor().getSelectedIndex());
 					
 										
 					JOptionPane.showMessageDialog(
 							null,
-							parente.getCtrlProdutos().inserirPrato(codigo,nome, preÃ§o, esobremesa, fornecedor));
+							parente.getCtrlProdutos().inserirPrato(nome, preço, esobremesa, fornecedor));
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);

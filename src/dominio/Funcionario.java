@@ -7,12 +7,15 @@ public class Funcionario {
 	private String telefone;
 	private String endereco;
 	private String funcao;
+	
+	private static int proxMatricula = 0;
 
-	public Funcionario(String nome, int matricula, String data,
+	public Funcionario(String nome, String data,
 			String telefone, String endereco, String funcao) {
-
+		
 		this.nome = nome;
-		this.matricula = matricula;
+		proxMatricula++;
+		this.matricula = proxMatricula;
 		this.dataNascimento = data;
 		this.telefone = telefone;
 		this.endereco = endereco;
@@ -31,9 +34,6 @@ public class Funcionario {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
-	}
 
 	public String getData() {
 		return dataNascimento;

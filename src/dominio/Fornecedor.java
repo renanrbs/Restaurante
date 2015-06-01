@@ -6,9 +6,11 @@ public class Fornecedor {
 	private String telefone;
 	private String endereço;
 	private int codigo;
+	private static int proxCodigo = 0;
 	
-	public Fornecedor(int codigo,String nome, String telefone, String endereço){
-		this.codigo = codigo;
+	public Fornecedor(String nome, String telefone, String endereço){
+		proxCodigo ++;
+		this.codigo = proxCodigo;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.endereço = endereço;
@@ -18,9 +20,7 @@ public class Fornecedor {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	
 
 	public String getNome() {
 		return nome;

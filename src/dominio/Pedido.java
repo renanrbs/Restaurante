@@ -3,12 +3,16 @@ package dominio;
 public class Pedido {
 
 	private int codigo;
+	private static int proxCodigo = 0;
+	private float preco;
 	private Produto[] produto;
 	private Funcionario cozinheiro;
 
-	public Pedido(int codigo, Funcionario Funcionario) {
-		this.codigo = codigo;
+	public Pedido(Funcionario Funcionario) {
+		proxCodigo ++;
+		this.codigo = proxCodigo;
 		this.cozinheiro = Funcionario;
+		
 		this.produto = new Produto[3];
 	}
 
@@ -24,9 +28,6 @@ public class Pedido {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
 
 	public void InserirProduto(Produto produto) {
 		for (int i = 0; i < this.produto.length; i++) {
@@ -48,14 +49,14 @@ public class Pedido {
 	}
 
 	public float calcularPreço() {
-		float preço = 0;
+		this.preco = 0;
 		for (int i = 0; i < this.produto.length; i++) {
 			if (this.produto[i] != null) {
-				preço += produto[i].getPreço();
+				this.preco += produto[i].getPreço();
 			}
 
 		}
-		return preço;
+		return this.preco;
 
 	}
 

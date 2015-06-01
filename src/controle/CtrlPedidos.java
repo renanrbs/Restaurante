@@ -14,42 +14,34 @@ public class CtrlPedidos{
 		vetorP = new Pedido[3];
 	}
 
-	public String inserirPedidoEx(int codigo, Cliente cliente,
+	public String inserirPedidoEx( Cliente cliente,
 			Funcionario cozinheiro, Funcionario entregador,
 			Funcionario atendente) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
-			if (vetorP[i] != null) {
-				if (vetorP[i].getCodigo() == codigo)
-					return "Pedido ja existe";
-
-			} else
+			if (vetorP[i] == null)
 				break;
 		}
 		if (i >= vetorP.length)
 			return "Vetor de Pedidos lotado";
 
-		vetorP[i] = new Externo(codigo, cliente, cozinheiro, entregador,
+		vetorP[i] = new Externo( cliente, cozinheiro, entregador,
 				atendente);
 
 		return "Pedido Inserido";
 	}
 
-	public String inserirPedidoIn(int codigo, Funcionario cozinheiro,
+	public String inserirPedidoIn(Funcionario cozinheiro,
 			Mesa mesa, Funcionario garçom) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
-			if (vetorP[i] != null) {
-				if (vetorP[i].getCodigo() == codigo)
-					return "Pedido ja existe";
-
-			} else
+			if (vetorP[i] == null)
 				break;
 		}
 		if (i >= vetorP.length)
 			return "Vetor de Pedidos lotado";
 
-		vetorP[i] = new Interno(codigo, cozinheiro, mesa, garçom);
+		vetorP[i] = new Interno( cozinheiro, mesa, garçom);
 
 		return "Pedido Inserido";
 	}

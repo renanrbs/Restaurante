@@ -9,20 +9,16 @@ public class CtrlMesa{
 		vetorM = new Mesa[3];
 	}
 	
-	public String inserirMesa(int numero) {
+	public String inserirMesa() {
 		int i;
 		for (i = 0; i < vetorM.length; i++) {
-			if (vetorM[i] != null) {
-				if (vetorM[i].getNumero() == numero)
-					return "Mesa já existe";
-
-			} else
+			if (vetorM[i] == null)
 				break;
 		}
 		if (i >= vetorM.length)
 			return "Vetor de mesas lotado";
 
-		vetorM[i] = new Mesa(numero);
+		vetorM[i] = new Mesa();
 		return "Mesa Inserida";
 	}
 

@@ -25,7 +25,6 @@ public class JanelaHome extends JFrame {
 	private JButton btnCadastrarCliente;
 	private JButton btnCadastrarFornecedor;
 	private JButton btnCadastrarFuncionario;
-	private JButton btnCadastrarMesa;
 	private JButton btnCadastrarPedido;
 	private JButton btnCadastrarProduto;
 
@@ -62,11 +61,12 @@ public class JanelaHome extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getLblEscolha());
 		contentPane.add(getBtnCadastrarCliente());
-		contentPane.add(getBtnCadastrarMesa());
 		contentPane.add(getBtnCadastrarFornecedor());
 		contentPane.add(getBtnCadastrarPedido());
 		contentPane.add(getBtnCadastrarFuncionario());
 		contentPane.add(getBtnCadastrarProduto());
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		
 		
 	
@@ -115,7 +115,7 @@ public class JanelaHome extends JFrame {
 					dispose();
 				}
 			});
-			btnCadastrarCliente.setBounds(5, 68, 212, 63);
+			btnCadastrarCliente.setBounds(217, 131, 212, 63);
 		}
 		return btnCadastrarCliente;
 	}
@@ -126,6 +126,9 @@ public class JanelaHome extends JFrame {
 			btnCadastrarFornecedor.setBounds(5, 131, 212, 63);
 			btnCadastrarFornecedor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					JanelaFornecedor janela = new JanelaFornecedor(JanelaHome.this);
+					janela.setVisible(true);
+					dispose();
 				}
 			});
 		}
@@ -147,25 +150,10 @@ public class JanelaHome extends JFrame {
 		return btnCadastrarFuncionario;
 	}
 
-	private JButton getBtnCadastrarMesa() {
-		if (btnCadastrarMesa == null) {
-			btnCadastrarMesa = new JButton("Cadastrar Mesa");
-			btnCadastrarMesa.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JanelaMesa janela = new JanelaMesa(JanelaHome.this);
-					janela.setVisible(true);
-					dispose();
-				}
-			});
-			btnCadastrarMesa.setBounds(217, 68, 212, 63);
-		}
-		return btnCadastrarMesa;
-	}
-
 	private JButton getBtnCadastrarPedido() {
 		if (btnCadastrarPedido == null) {
 			btnCadastrarPedido = new JButton("Cadastrar Pedido");
-			btnCadastrarPedido.setBounds(217, 131, 212, 63);
+			btnCadastrarPedido.setBounds(107, 67, 212, 63);
 		}
 		return btnCadastrarPedido;
 	}
@@ -173,6 +161,13 @@ public class JanelaHome extends JFrame {
 	private JButton getBtnCadastrarProduto() {
 		if (btnCadastrarProduto == null) {
 			btnCadastrarProduto = new JButton("Cadastrar Produto");
+			btnCadastrarProduto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JanelaProduto janela = new JanelaProduto(JanelaHome.this);
+					janela.setVisible(true);
+					dispose();
+				}
+			});
 			btnCadastrarProduto.setBounds(217, 194, 212, 63);
 		}
 		return btnCadastrarProduto;

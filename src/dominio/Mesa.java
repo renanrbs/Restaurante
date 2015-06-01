@@ -2,18 +2,16 @@ package dominio;
 
 public class Mesa {
 	private int numero;
+	private static int proxNumero;
 	private boolean ocupada = false;
 
-	public Mesa(int numero) {
-		this.numero = numero;
+	public Mesa() {
+		proxNumero ++;
+		this.numero = proxNumero;
 	}
 
 	public int getNumero() {
 		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 
 	public boolean isOcupada() {

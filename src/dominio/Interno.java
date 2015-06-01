@@ -4,8 +4,8 @@ public class Interno extends Pedido {
 	private Funcionario garçom;
 	private Mesa mesa;
 
-	public Interno(int codigo, Funcionario cozinheiro, Mesa mesa, Funcionario garçom) {
-		super(codigo, cozinheiro);
+	public Interno(Funcionario cozinheiro, Mesa mesa, Funcionario garçom) {
+		super(cozinheiro);
 		this.mesa = mesa;
 		this.garçom = garçom;
 	}

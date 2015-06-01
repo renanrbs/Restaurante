@@ -14,38 +14,34 @@ public class CtrlFuncionario{
 		vetorF = new Funcionario[10];
 	}
 
-	public String inserirFuncionario(char tipo, String nome, int matricula,
+	public String inserirFuncionario(char tipo, String nome,
 			String data, String telefone, String endereco, String funcao) {
 		int i;
 		for (i = 0; i < vetorF.length; i++) {
-			if (vetorF[i] != null) {
-				if (vetorF[i].getMatricula() == matricula)
-					return "Funcionario ja existe";
-
-			} else
+			if (vetorF[i] == null) 
 				break;
 		}
 		if (i >= vetorF.length)
 			return "Vetor de Funcionarios lotado";
 		switch (tipo) {
 		case 'a':
-			vetorF[i] = new Atendente(nome, matricula, data, telefone,
+			vetorF[i] = new Atendente(nome, data, telefone,
 					endereco, funcao);
 			break;
 		case 'e':
-			vetorF[i] = new Entregador(nome, matricula, data, telefone,
+			vetorF[i] = new Entregador(nome, data, telefone,
 					endereco, funcao);
 			break;
 		case 'c':
-			vetorF[i] = new Cozinheiro(nome, matricula, data, telefone,
+			vetorF[i] = new Cozinheiro(nome,  data, telefone,
 					endereco, funcao);
 			break;
 		case 'g':
-			vetorF[i] = new Garçom(nome, matricula, data, telefone, endereco,
+			vetorF[i] = new Garçom(nome, data, telefone, endereco,
 					funcao);
 			break;
 		default:
-			vetorF[i] = new Funcionario(nome, matricula, data, telefone,
+			vetorF[i] = new Funcionario(nome,  data, telefone,
 					endereco, funcao);
 			break;
 		}

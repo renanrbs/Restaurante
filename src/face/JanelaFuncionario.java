@@ -23,12 +23,10 @@ public class JanelaFuncionario extends JFrame {
 	private JTextField tfNome;
 	private JLabel lblCadastroDeFuncionarios;
 	private JLabel lblNome;
-	private JLabel lblMatricula;
 	private JLabel lblData;
 	private JLabel lblNewLabel;
 	private JLabel lblEndereo;
 	private JLabel lblNewLabel_1;
-	private JTextField tfMatricula;
 	private JTextField tfData;
 	private JTextField tfTelefone;
 	private JTextField tfEndereco;
@@ -58,18 +56,19 @@ public class JanelaFuncionario extends JFrame {
 		contentPane.add(getTfNome());
 		contentPane.add(getLblCadastroDeFuncionarios());
 		contentPane.add(getLblNome());
-		contentPane.add(getLblMatricula());
 		contentPane.add(getLblData());
 		contentPane.add(getLblNewLabel());
 		contentPane.add(getLblEndereo());
 		contentPane.add(getLblNewLabel_1());
-		contentPane.add(getTfMatricula());
 		contentPane.add(getTfData());
 		contentPane.add(getTfTelefone());
 		contentPane.add(getTfEndereco());
 		contentPane.add(getBtnCadastrar());
 		contentPane.add(getBtnVoltar());
 		contentPane.add(getCbCargo());
+		
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 
 	private JTextField getTfNome() {
@@ -99,18 +98,10 @@ public class JanelaFuncionario extends JFrame {
 		return lblNome;
 	}
 
-	private JLabel getLblMatricula() {
-		if (lblMatricula == null) {
-			lblMatricula = new JLabel("Matricula:");
-			lblMatricula.setBounds(49, 88, 57, 20);
-		}
-		return lblMatricula;
-	}
-
 	private JLabel getLblData() {
 		if (lblData == null) {
 			lblData = new JLabel("Data:");
-			lblData.setBounds(49, 119, 46, 20);
+			lblData.setBounds(49, 88, 46, 20);
 		}
 		return lblData;
 	}
@@ -118,7 +109,7 @@ public class JanelaFuncionario extends JFrame {
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("Telefone:");
-			lblNewLabel.setBounds(49, 150, 70, 20);
+			lblNewLabel.setBounds(49, 119, 70, 20);
 		}
 		return lblNewLabel;
 	}
@@ -126,7 +117,7 @@ public class JanelaFuncionario extends JFrame {
 	private JLabel getLblEndereo() {
 		if (lblEndereo == null) {
 			lblEndereo = new JLabel("Endere\u00E7o:");
-			lblEndereo.setBounds(43, 181, 63, 20);
+			lblEndereo.setBounds(49, 150, 63, 20);
 		}
 		return lblEndereo;
 	}
@@ -134,25 +125,16 @@ public class JanelaFuncionario extends JFrame {
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("Fun\u00E7\u00E3o:");
-			lblNewLabel_1.setBounds(49, 212, 46, 14);
+			lblNewLabel_1.setBounds(49, 196, 46, 14);
 		}
 		return lblNewLabel_1;
-	}
-
-	private JTextField getTfMatricula() {
-		if (tfMatricula == null) {
-			tfMatricula = new JTextField();
-			tfMatricula.setColumns(10);
-			tfMatricula.setBounds(106, 89, 234, 20);
-		}
-		return tfMatricula;
 	}
 
 	private JTextField getTfData() {
 		if (tfData == null) {
 			tfData = new JTextField();
 			tfData.setColumns(10);
-			tfData.setBounds(106, 119, 234, 20);
+			tfData.setBounds(106, 89, 234, 20);
 		}
 		return tfData;
 	}
@@ -161,7 +143,7 @@ public class JanelaFuncionario extends JFrame {
 		if (tfTelefone == null) {
 			tfTelefone = new JTextField();
 			tfTelefone.setColumns(10);
-			tfTelefone.setBounds(106, 150, 234, 20);
+			tfTelefone.setBounds(106, 119, 234, 20);
 		}
 		return tfTelefone;
 	}
@@ -170,7 +152,7 @@ public class JanelaFuncionario extends JFrame {
 		if (tfEndereco == null) {
 			tfEndereco = new JTextField();
 			tfEndereco.setColumns(10);
-			tfEndereco.setBounds(106, 181, 234, 20);
+			tfEndereco.setBounds(106, 150, 234, 20);
 		}
 		return tfEndereco;
 	}
@@ -182,37 +164,34 @@ public class JanelaFuncionario extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					String nome = tfNome.getText();
-					int matricula = Integer.parseInt(tfMatricula.getText());
+
 					String data = tfData.getText();
 					String telefone = tfData.getText();
 					String endereco = tfEndereco.getText();
 					String msg;
 
 					if (cbCargo.getSelectedItem().equals("Atendente")) {
-						/*
-						 * msg = ctrlF.inserirFuncionario(nome, matricula, data,
-						 * telefone, endereco, "Atendente", "Atendente");
-						 * JOptionPane.showMessageDialog(null, msg);
-						 */
-
 						JOptionPane.showMessageDialog(
 								null,
 								parente.getCtrlFuncionario()
 										.inserirFuncionario('a', nome,
-												matricula, data, telefone,
+												data, telefone,
 												endereco, "Atendente"));
 
 					} else if (cbCargo.getSelectedItem().equals("Entregador")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario('e', nome, matricula,
-								data, telefone, endereco, "Entregador");
+						msg = parente.getCtrlFuncionario().inserirFuncionario(
+								'e', nome, data, telefone, endereco,
+								"Entregador");
 						JOptionPane.showMessageDialog(null, msg);
 					} else if (cbCargo.getSelectedItem().equals("Cozinheiro")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario('c', nome, matricula,
-								data, telefone, endereco, "Cozinheiro");
+						msg = parente.getCtrlFuncionario().inserirFuncionario(
+								'c', nome, data, telefone, endereco,
+								"Cozinheiro");
 						JOptionPane.showMessageDialog(null, msg);
 					} else if (cbCargo.getSelectedItem().equals("Garcom")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario('g', nome, matricula,
-								data, telefone, endereco, "Garcom");
+						msg = parente.getCtrlFuncionario().inserirFuncionario(
+								'g', nome, data, telefone, endereco,
+								"Garcom");
 						JOptionPane.showMessageDialog(null, msg);
 					}
 
@@ -245,7 +224,7 @@ public class JanelaFuncionario extends JFrame {
 			cbCargo = new JComboBox();
 			cbCargo.setModel(new DefaultComboBoxModel(new String[] {
 					"Atendente", "Entregador", "Cozinheiro", "Garcom" }));
-			cbCargo.setBounds(106, 208, 92, 23);
+			cbCargo.setBounds(110, 192, 92, 23);
 		}
 		return cbCargo;
 	}

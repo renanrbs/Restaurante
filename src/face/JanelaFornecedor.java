@@ -17,14 +17,12 @@ public class JanelaFornecedor extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblCadastroDeFornecedores;
-	private JLabel lblCdigo;
 	private JLabel lblNome;
 	private JLabel lblTelefone;
-	private JLabel lblEndereo;
-	private JTextField tfCod;
+	private JLabel lblEndereco;
 	private JTextField tfNome;
 	private JTextField tfTelefone;
-	private JTextField tfEndereço;
+	private JTextField tfEndereco;
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
 	private JanelaHome parente;
@@ -41,17 +39,17 @@ public class JanelaFornecedor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLblCadastroDeFornecedores());
-		contentPane.add(getLblCdigo());
 		contentPane.add(getLblNome());
 		contentPane.add(getLblTelefone());
-		contentPane.add(getLblEndereo());
-		contentPane.add(getTfCod());
+		contentPane.add(getLblEndereco());
 		contentPane.add(getTfNome());
 		contentPane.add(getTfTelefone());
-		contentPane.add(getTfEndereço());
+		contentPane.add(getTfEndereco());
 		contentPane.add(getBtnCadastrar());
 		contentPane.add(getBtnVoltar());
+		
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 
 	private JLabel getLblCadastroDeFornecedores() {
@@ -62,14 +60,6 @@ public class JanelaFornecedor extends JFrame {
 			lblCadastroDeFornecedores.setBounds(113, 11, 227, 63);
 		}
 		return lblCadastroDeFornecedores;
-	}
-
-	private JLabel getLblCdigo() {
-		if (lblCdigo == null) {
-			lblCdigo = new JLabel("C\u00F3digo: ");
-			lblCdigo.setBounds(32, 70, 69, 14);
-		}
-		return lblCdigo;
 	}
 
 	private JLabel getLblNome() {
@@ -88,21 +78,12 @@ public class JanelaFornecedor extends JFrame {
 		return lblTelefone;
 	}
 
-	private JLabel getLblEndereo() {
-		if (lblEndereo == null) {
-			lblEndereo = new JLabel("Endere\u00E7o:");
-			lblEndereo.setBounds(32, 160, 88, 14);
+	private JLabel getLblEndereco() {
+		if (lblEndereco == null) {
+			lblEndereco = new JLabel("Endere\u00E7o:");
+			lblEndereco.setBounds(32, 160, 88, 14);
 		}
-		return lblEndereo;
-	}
-
-	private JTextField getTfCod() {
-		if (tfCod == null) {
-			tfCod = new JTextField();
-			tfCod.setBounds(97, 70, 327, 20);
-			tfCod.setColumns(10);
-		}
-		return tfCod;
+		return lblEndereco;
 	}
 
 	private JTextField getTfNome() {
@@ -123,13 +104,13 @@ public class JanelaFornecedor extends JFrame {
 		return tfTelefone;
 	}
 
-	private JTextField getTfEndereço() {
-		if (tfEndereço == null) {
-			tfEndereço = new JTextField();
-			tfEndereço.setBounds(97, 160, 327, 20);
-			tfEndereço.setColumns(10);
+	private JTextField getTfEndereco() {
+		if (tfEndereco == null) {
+			tfEndereco = new JTextField();
+			tfEndereco.setBounds(97, 160, 327, 20);
+			tfEndereco.setColumns(10);
 		}
-		return tfEndereço;
+		return tfEndereco;
 	}
 
 	private JButton getBtnCadastrar() {
@@ -137,14 +118,14 @@ public class JanelaFornecedor extends JFrame {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					int codigo = Integer.parseInt(getTfCod().getText());
+					
 					String nome = getTfNome().getText();
 					String telefone = getTfTelefone().getText();
-					String endereço = getTfEndereço().getText();
+					String endere�o = getTfEndereco().getText();
 					
 					JOptionPane.showMessageDialog(
 							null,
-							parente.getCtrlFornecedores().inserirFornecedor(codigo,nome, telefone, endereço));
+							parente.getCtrlFornecedores().inserirFornecedor(nome, telefone, endere�o));
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);

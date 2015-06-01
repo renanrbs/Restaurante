@@ -3,8 +3,8 @@ package dominio;
 public class Prato extends Produto{
 	private boolean eSobremesa;
 	
-	public Prato(int codigo,String nome,float preço,boolean éSobremesa,Fornecedor fornecedor){
-		super(codigo,nome,preço,fornecedor);
+	public Prato(String nome,float preço,boolean éSobremesa,Fornecedor fornecedor){
+		super(nome,preço,fornecedor);
 		this.eSobremesa = éSobremesa;
 	}
 

@@ -3,9 +3,11 @@ package dominio;
 public class Cliente {
 	private String nome, telefone, endereço;
 	private int codigo;
+	private static int proxCodigo = 0;
 
-	public Cliente(int codigo, String nome, String telefone, String endereço) {
-		this.codigo = codigo;
+	public Cliente(String nome, String telefone, String endereço) {
+		proxCodigo ++;
+		this.codigo = proxCodigo;
 		this.nome = nome;
 		this.telefone = telefone;
 		this.endereço = endereço;
@@ -15,9 +17,7 @@ public class Cliente {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	
 
 	public String getNome() {
 		return nome;

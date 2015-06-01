@@ -2,25 +2,23 @@ package dominio;
 
 public class Produto {
 	private int codigo;
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	private static int proxcodigo = 0;
 
 	private String nome;
 	private float preço;
 	Fornecedor fornecedor;
 
-	public Produto(int codigo,String nome, float preço, Fornecedor fornecedor) {
-		this.codigo = codigo;
+	public Produto(String nome, float preço, Fornecedor fornecedor) {
+		proxcodigo ++;
+		this.codigo = proxcodigo;
 		this.nome = nome;
 		this.preço = preço;
 		this.fornecedor = fornecedor;
 	}
-
+	
+	public int getCodigo() {
+		return codigo;
+	}
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}

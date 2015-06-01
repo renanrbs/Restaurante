@@ -8,9 +8,9 @@ public class Externo extends Pedido {
 	private Funcionario entregador;
 	private Funcionario atendente;
 
-	public Externo(int codigo, Cliente cliente, Funcionario cozinheiro,
+	public Externo(Cliente cliente, Funcionario cozinheiro,
 			Funcionario entregador, Funcionario atendente) {
-		super(codigo, cozinheiro);
+		super(cozinheiro);
 		this.cliente = cliente;
 		this.entregador = entregador;
 		this.atendente = atendente;
