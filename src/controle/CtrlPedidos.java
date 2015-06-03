@@ -1,8 +1,11 @@
 package controle;
 
+import dominio.Atendente;
 import dominio.Cliente;
+import dominio.Cozinheiro;
+import dominio.Entregador;
 import dominio.Externo;
-import dominio.Funcionario;
+import dominio.Garçom;
 import dominio.Interno;
 import dominio.Mesa;
 import dominio.Pedido;
@@ -15,8 +18,8 @@ public class CtrlPedidos{
 	}
 
 	public String inserirPedidoEx( Cliente cliente,
-			Funcionario cozinheiro, Funcionario entregador,
-			Funcionario atendente) {
+			Cozinheiro cozinheiro, Entregador entregador,
+			Atendente atendente) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
 			if (vetorP[i] == null)
@@ -31,8 +34,8 @@ public class CtrlPedidos{
 		return "Pedido Inserido";
 	}
 
-	public String inserirPedidoIn(Funcionario cozinheiro,
-			Mesa mesa, Funcionario garçom) {
+	public String inserirPedidoIn(Cozinheiro cozinheiro,
+			Mesa mesa, Garçom garçom) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
 			if (vetorP[i] == null)

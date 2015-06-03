@@ -1,22 +1,22 @@
 package dominio;
 
 public class Interno extends Pedido {
-	private Funcionario garçom;
+	private Garçom Garçom;
 	private Mesa mesa;
 
-	public Interno(Funcionario cozinheiro, Mesa mesa, Funcionario garçom) {
+	public Interno(Cozinheiro cozinheiro, Mesa mesa, Garçom Garçom) {
 		super(cozinheiro);
 		this.mesa = mesa;
-		this.garçom = garçom;
+		this.Garçom = Garçom;
 	}
 
-	public void setGarçom(Funcionario garçom) {
-		this.garçom = garçom;
+	public void setGarçom(Garçom Garçom) {
+		this.Garçom = Garçom;
 	}
 
 	@Override
-	public Funcionario getGarçom() {
-		return garçom;
+	public Garçom getGarçom() {
+		return Garçom;
 	}
 
 	@Override

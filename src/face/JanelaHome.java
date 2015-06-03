@@ -25,7 +25,7 @@ public class JanelaHome extends JFrame {
 	private JButton btnCadastrarCliente;
 	private JButton btnCadastrarFornecedor;
 	private JButton btnCadastrarFuncionario;
-	private JButton btnCadastrarPedido;
+	private JButton btnCadastrarPedidoInterno;
 	private JButton btnCadastrarProduto;
 
 	private CtrlFuncionario ctrlFuncionario;
@@ -34,6 +34,7 @@ public class JanelaHome extends JFrame {
 	private CtrlPedidos ctrlPedidos;
 	private CtrlProdutos ctrlProdutos;
 	private CtrlMesa ctrlMesa;
+	private JButton btnCadastrarPedidoExterno;
 	
 
 	/**
@@ -62,9 +63,10 @@ public class JanelaHome extends JFrame {
 		contentPane.add(getLblEscolha());
 		contentPane.add(getBtnCadastrarCliente());
 		contentPane.add(getBtnCadastrarFornecedor());
-		contentPane.add(getBtnCadastrarPedido());
+		contentPane.add(getBtnCadastrarPedidoInterno());
 		contentPane.add(getBtnCadastrarFuncionario());
 		contentPane.add(getBtnCadastrarProduto());
+		contentPane.add(getBtnCadastrarPedidoExterno());
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
@@ -150,12 +152,19 @@ public class JanelaHome extends JFrame {
 		return btnCadastrarFuncionario;
 	}
 
-	private JButton getBtnCadastrarPedido() {
-		if (btnCadastrarPedido == null) {
-			btnCadastrarPedido = new JButton("Cadastrar Pedido");
-			btnCadastrarPedido.setBounds(107, 67, 212, 63);
+	private JButton getBtnCadastrarPedidoInterno() {
+		if (btnCadastrarPedidoInterno == null) {
+			btnCadastrarPedidoInterno = new JButton("Cadastrar Pedido Interno");
+			btnCadastrarPedidoInterno.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JanelaPedido janela = new JanelaPedido(JanelaHome.this);
+					janela.setVisible(true);
+					dispose();
+				}
+			});
+			btnCadastrarPedidoInterno.setBounds(5, 67, 212, 63);
 		}
-		return btnCadastrarPedido;
+		return btnCadastrarPedidoInterno;
 	}
 
 	private JButton getBtnCadastrarProduto() {
@@ -171,5 +180,12 @@ public class JanelaHome extends JFrame {
 			btnCadastrarProduto.setBounds(217, 194, 212, 63);
 		}
 		return btnCadastrarProduto;
+	}
+	private JButton getBtnCadastrarPedidoExterno() {
+		if (btnCadastrarPedidoExterno == null) {
+			btnCadastrarPedidoExterno = new JButton("Cadastrar Pedido Externo");
+			btnCadastrarPedidoExterno.setBounds(217, 67, 212, 63);
+		}
+		return btnCadastrarPedidoExterno;
 	}
 }

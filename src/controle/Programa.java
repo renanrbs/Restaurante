@@ -6,8 +6,11 @@ import face.JanelaHome;
 public class Programa {
 	public static void main(String[] args) {
 
+	
 		JanelaHome frame = new JanelaHome();
 		frame.setVisible(true);
+		
+		
 		
 		/*CtrlFuncionario ctrlFuncionario = new CtrlFuncionario();
 		CtrlClientes ctrlClientes = new CtrlClientes();

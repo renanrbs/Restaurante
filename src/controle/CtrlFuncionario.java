@@ -26,19 +26,18 @@ public class CtrlFuncionario{
 		switch (tipo) {
 		case 'a':
 			vetorF[i] = new Atendente(nome, data, telefone,
-					endereco, funcao);
+					endereco);
 			break;
 		case 'e':
 			vetorF[i] = new Entregador(nome, data, telefone,
-					endereco, funcao);
+					endereco);
 			break;
 		case 'c':
 			vetorF[i] = new Cozinheiro(nome,  data, telefone,
-					endereco, funcao);
+					endereco);
 			break;
 		case 'g':
-			vetorF[i] = new Garçom(nome, data, telefone, endereco,
-					funcao);
+			vetorF[i] = new Garçom(nome, data, telefone, endereco);
 			break;
 		default:
 			vetorF[i] = new Funcionario(nome,  data, telefone,

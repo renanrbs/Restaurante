@@ -5,11 +5,11 @@ import java.sql.Time;
 public class Externo extends Pedido {
 	private Time horaSaida, horaChegada;
 	private Cliente cliente;
-	private Funcionario entregador;
-	private Funcionario atendente;
+	private Entregador entregador;
+	private Atendente atendente;
 
-	public Externo(Cliente cliente, Funcionario cozinheiro,
-			Funcionario entregador, Funcionario atendente) {
+	public Externo(Cliente cliente, Cozinheiro cozinheiro,
+			Entregador entregador, Atendente atendente) {
 		super(cozinheiro);
 		this.cliente = cliente;
 		this.entregador = entregador;
@@ -27,20 +27,20 @@ public class Externo extends Pedido {
 	}
 
 	@Override
-	public Funcionario getEntregador() {
+	public Entregador getEntregador() {
 		return entregador;
 	}
 
 	@Override
-	public Funcionario getAtendente() {
+	public Atendente getAtendente() {
 		return atendente;
 	}
 
-	public void setEntregador(Funcionario entregador) {
+	public void setEntregador(Entregador entregador) {
 		this.entregador = entregador;
 	}
 
-	public void setAtendente(Funcionario atendente) {
+	public void setAtendente(Atendente atendente) {
 		this.atendente = atendente;
 	}
 
