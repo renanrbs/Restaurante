@@ -5,16 +5,19 @@ import dominio.Cozinheiro;
 import dominio.Entregador;
 import dominio.Funcionario;
 import dominio.Garçom;
+import face.JanelaFuncionario;
 
 public class CtrlFuncionario{
 
 	private Funcionario[] vetorF;
-
-	public CtrlFuncionario() {
-		vetorF = new Funcionario[10];
+	private Programa parente;
+	
+	public CtrlFuncionario(Programa parente) {
+		vetorF = new Funcionario[5];
+		this.parente = parente;
 	}
 
-	public String inserirFuncionario(char tipo, String nome,
+	public String inserirFuncionario(String nome,
 			String data, String telefone, String endereco, String funcao) {
 		int i;
 		for (i = 0; i < vetorF.length; i++) {
@@ -23,20 +26,20 @@ public class CtrlFuncionario{
 		}
 		if (i >= vetorF.length)
 			return "Vetor de Funcionarios lotado";
-		switch (tipo) {
-		case 'a':
+		switch (funcao.toLowerCase()) {
+		case "atendente":
 			vetorF[i] = new Atendente(nome, data, telefone,
 					endereco);
 			break;
-		case 'e':
+		case "entregador":
 			vetorF[i] = new Entregador(nome, data, telefone,
 					endereco);
 			break;
-		case 'c':
+		case "cozinheiro":
 			vetorF[i] = new Cozinheiro(nome,  data, telefone,
 					endereco);
 			break;
-		case 'g':
+		case "garçom":
 			vetorF[i] = new Garçom(nome, data, telefone, endereco);
 			break;
 		default:
@@ -56,6 +59,15 @@ public class CtrlFuncionario{
 			}
 		}
 		return null;
+	}
+	
+	public void AbrirJanela(){
+		JanelaFuncionario janela = new JanelaFuncionario(this);
+		janela.setVisible(true);
+	}
+	
+	public void Voltar(){
+		parente.Voltar();
 	}
 
 }

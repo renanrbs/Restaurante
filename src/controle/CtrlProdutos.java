@@ -4,16 +4,19 @@ import dominio.Bebida;
 import dominio.Fornecedor;
 import dominio.Prato;
 import dominio.Produto;
+import face.JanelaProduto;
 
 public class CtrlProdutos {
 	private Produto[] vetorP;
+	private Programa parente;
 
-	public CtrlProdutos() {
+	public CtrlProdutos(Programa parente) {
 		vetorP = new Produto[3];
+		this.parente = parente;
 	}
 
-	public String inserirPrato( String nome, float preço,
-			boolean éSobremesa, Fornecedor fornecedor) {
+	public String inserirPrato(String nome, float preço, boolean éSobremesa,
+			Fornecedor fornecedor) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
 			if (vetorP[i] == null)
@@ -25,7 +28,9 @@ public class CtrlProdutos {
 		vetorP[i] = new Prato(nome, preço, éSobremesa, fornecedor);
 		return "Prato Inserido";
 	}
-	public String inserirBebida (String nome,float preco,String ano,Fornecedor fornecedor){
+
+	public String inserirBebida(String nome, float preco, String ano,
+			Fornecedor fornecedor) {
 		int i;
 		for (i = 0; i < vetorP.length; i++) {
 			if (vetorP[i] == null)
@@ -46,5 +51,18 @@ public class CtrlProdutos {
 			}
 		}
 		return null;
+	}
+
+	public void AbrirJanela() {
+		JanelaProduto janela = new JanelaProduto(this);
+		janela.setVisible(true);
+	}
+
+	public void Voltar() {
+		parente.Voltar();
+	}
+
+	public CtrlFornecedores getCtrlFornecedores() {
+		return parente.getCtrlFornecedores();
 	}
 }

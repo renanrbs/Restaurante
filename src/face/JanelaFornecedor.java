@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controle.CtrlFornecedores;
+import controle.Programa;
+
 public class JanelaFornecedor extends JFrame {
 
 	private JPanel contentPane;
@@ -25,12 +28,11 @@ public class JanelaFornecedor extends JFrame {
 	private JTextField tfEndereco;
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
-	private JanelaHome parente;
+	private CtrlFornecedores parente;
 
-	public JanelaFornecedor(JanelaHome parente) {
+	public JanelaFornecedor(CtrlFornecedores parente) {
 		this.parente = parente;
-		
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,7 +49,7 @@ public class JanelaFornecedor extends JFrame {
 		contentPane.add(getTfEndereco());
 		contentPane.add(getBtnCadastrar());
 		contentPane.add(getBtnVoltar());
-		
+
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
@@ -55,8 +57,8 @@ public class JanelaFornecedor extends JFrame {
 	private JLabel getLblCadastroDeFornecedores() {
 		if (lblCadastroDeFornecedores == null) {
 			lblCadastroDeFornecedores = new JLabel("Cadastro de Fornecedores");
-			lblCadastroDeFornecedores.setFont(new Font("Arial Black", Font.PLAIN,
-					15));
+			lblCadastroDeFornecedores.setFont(new Font("Arial Black",
+					Font.PLAIN, 15));
 			lblCadastroDeFornecedores.setBounds(113, 11, 227, 63);
 		}
 		return lblCadastroDeFornecedores;
@@ -118,14 +120,13 @@ public class JanelaFornecedor extends JFrame {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					String nome = getTfNome().getText();
 					String telefone = getTfTelefone().getText();
 					String endereço = getTfEndereco().getText();
-					
-					JOptionPane.showMessageDialog(
-							null,
-							parente.getCtrlFornecedores().inserirFornecedor(nome, telefone, endereço));
+
+					JOptionPane.showMessageDialog(null,
+							parente.inserirFornecedor(nome, telefone, endereço));
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);
@@ -138,8 +139,7 @@ public class JanelaFornecedor extends JFrame {
 			btnVoltar = new JButton("Voltar");
 			btnVoltar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaHome janela = parente;
-					janela.setVisible(true);
+					parente.Voltar();
 					dispose();
 				}
 			});

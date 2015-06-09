@@ -1,13 +1,17 @@
 package controle;
 
 import dominio.Cliente;
+import face.JanelaCliente;
+import face.JanelaHome;
 
 public class CtrlClientes{
 
 
 		private Cliente[] vetorC;
+		private Programa parente;
 
-		public CtrlClientes() {
+		public CtrlClientes(Programa parente) {
+			this.parente = parente;
 			vetorC = new Cliente[3];
 		}
 
@@ -35,7 +39,15 @@ public class CtrlClientes{
 			}
 			return null;
 		}
-
+		
+		public void AbrirJanela(){
+			JanelaCliente janela = new JanelaCliente(this);
+			janela.setVisible(true);
+		}
+		
+		public void Voltar(){
+			parente.Voltar();
+		}
 	
 
 }

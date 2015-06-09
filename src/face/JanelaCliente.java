@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controle.CtrlClientes;
+
 public class JanelaCliente extends JFrame {
 
 	private JPanel contentPane;
@@ -25,9 +27,9 @@ public class JanelaCliente extends JFrame {
 	private JTextField tfEndereço;
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
-	private JanelaHome parente;
+	private CtrlClientes parente;
 
-	public JanelaCliente(JanelaHome parente) {
+	public JanelaCliente(CtrlClientes parente) {
 		this.parente = parente;
 		
 		
@@ -124,7 +126,8 @@ public class JanelaCliente extends JFrame {
 					
 					JOptionPane.showMessageDialog(
 							null,
-							parente.getCtrlClientes().inserirCliente(nome, telefone, endereço));
+							parente.inserirCliente(nome, telefone, endereço));
+					
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);
@@ -137,8 +140,7 @@ public class JanelaCliente extends JFrame {
 			btnVoltar = new JButton("Voltar");
 			btnVoltar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaHome janela = parente;
-					janela.setVisible(true);
+					parente.Voltar();
 					dispose();
 				}
 			});

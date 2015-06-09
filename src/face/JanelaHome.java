@@ -17,6 +17,7 @@ import controle.CtrlFuncionario;
 import controle.CtrlMesa;
 import controle.CtrlPedidos;
 import controle.CtrlProdutos;
+import controle.Programa;
 
 public class JanelaHome extends JFrame {
 
@@ -25,17 +26,9 @@ public class JanelaHome extends JFrame {
 	private JButton btnCadastrarCliente;
 	private JButton btnCadastrarFornecedor;
 	private JButton btnCadastrarFuncionario;
-	private JButton btnCadastrarPedidoInterno;
 	private JButton btnCadastrarProduto;
 
-	private CtrlFuncionario ctrlFuncionario;
-	private CtrlClientes ctrlClientes;
-	private CtrlFornecedores ctrlFornecedores;
-	private CtrlPedidos ctrlPedidos;
-	private CtrlProdutos ctrlProdutos;
-	private CtrlMesa ctrlMesa;
-	private JButton btnCadastrarPedidoExterno;
-	
+	private Programa parente;
 
 	/**
 	 * Launch the application.
@@ -44,15 +37,9 @@ public class JanelaHome extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaHome() {
-		ctrlFuncionario = new CtrlFuncionario();
-		ctrlClientes = new CtrlClientes();
-		ctrlFornecedores = new CtrlFornecedores();
-		ctrlPedidos = new CtrlPedidos();
-		ctrlProdutos = new CtrlProdutos();
-		ctrlMesa = new CtrlMesa();
-		
-		
+	public JanelaHome(Programa parente) {
+		this.parente = parente;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -63,46 +50,18 @@ public class JanelaHome extends JFrame {
 		contentPane.add(getLblEscolha());
 		contentPane.add(getBtnCadastrarCliente());
 		contentPane.add(getBtnCadastrarFornecedor());
-		contentPane.add(getBtnCadastrarPedidoInterno());
 		contentPane.add(getBtnCadastrarFuncionario());
 		contentPane.add(getBtnCadastrarProduto());
-		contentPane.add(getBtnCadastrarPedidoExterno());
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		
-		
-	
-	}
 
-	public CtrlFuncionario getCtrlFuncionario() {
-		return ctrlFuncionario;
-	}
-
-	public CtrlClientes getCtrlClientes() {
-		return ctrlClientes;
-	}
-
-	public CtrlFornecedores getCtrlFornecedores() {
-		return ctrlFornecedores;
-	}
-
-	public CtrlPedidos getCtrlPedidos() {
-		return ctrlPedidos;
-	}
-
-	public CtrlProdutos getCtrlProdutos() {
-		return ctrlProdutos;
-	}
-
-	public CtrlMesa getCtrlMesa() {
-		return ctrlMesa;
 	}
 
 	private JLabel getLblEscolha() {
 		if (lblEscolha == null) {
 			lblEscolha = new JLabel("Escolha uma op\u00E7\u00E3o");
-			lblEscolha.setBounds(146, 5, 212, 63);
-			lblEscolha.setFont(new Font("Arial Black", Font.PLAIN, 15));
+			lblEscolha.setBounds(110, 11, 212, 63);
+			lblEscolha.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		}
 		return lblEscolha;
 	}
@@ -112,8 +71,7 @@ public class JanelaHome extends JFrame {
 			btnCadastrarCliente = new JButton("Cadastrar Cliente");
 			btnCadastrarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaCliente janela = new JanelaCliente(JanelaHome.this);
-					janela.setVisible(true);
+					parente.AbrirCliente();
 					dispose();
 				}
 			});
@@ -128,8 +86,7 @@ public class JanelaHome extends JFrame {
 			btnCadastrarFornecedor.setBounds(5, 131, 212, 63);
 			btnCadastrarFornecedor.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaFornecedor janela = new JanelaFornecedor(JanelaHome.this);
-					janela.setVisible(true);
+					parente.AbrirFornecedor();
 					dispose();
 				}
 			});
@@ -142,8 +99,7 @@ public class JanelaHome extends JFrame {
 			btnCadastrarFuncionario = new JButton("Cadastrar Funcionario");
 			btnCadastrarFuncionario.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaFuncionario janela = new JanelaFuncionario(JanelaHome.this);
-					janela.setVisible(true);
+					parente.AbrirFuncionario();
 					dispose();
 				}
 			});
@@ -152,40 +108,17 @@ public class JanelaHome extends JFrame {
 		return btnCadastrarFuncionario;
 	}
 
-	private JButton getBtnCadastrarPedidoInterno() {
-		if (btnCadastrarPedidoInterno == null) {
-			btnCadastrarPedidoInterno = new JButton("Cadastrar Pedido Interno");
-			btnCadastrarPedidoInterno.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JanelaPedido janela = new JanelaPedido(JanelaHome.this);
-					janela.setVisible(true);
-					dispose();
-				}
-			});
-			btnCadastrarPedidoInterno.setBounds(5, 67, 212, 63);
-		}
-		return btnCadastrarPedidoInterno;
-	}
-
 	private JButton getBtnCadastrarProduto() {
 		if (btnCadastrarProduto == null) {
 			btnCadastrarProduto = new JButton("Cadastrar Produto");
 			btnCadastrarProduto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaProduto janela = new JanelaProduto(JanelaHome.this);
-					janela.setVisible(true);
+					parente.AbrirProduto();
 					dispose();
 				}
 			});
 			btnCadastrarProduto.setBounds(217, 194, 212, 63);
 		}
 		return btnCadastrarProduto;
-	}
-	private JButton getBtnCadastrarPedidoExterno() {
-		if (btnCadastrarPedidoExterno == null) {
-			btnCadastrarPedidoExterno = new JButton("Cadastrar Pedido Externo");
-			btnCadastrarPedidoExterno.setBounds(217, 67, 212, 63);
-		}
-		return btnCadastrarPedidoExterno;
 	}
 }

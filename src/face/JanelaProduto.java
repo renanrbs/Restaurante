@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.CtrlFornecedores;
+import controle.CtrlProdutos;
 import dominio.Fornecedor;
 
 public class JanelaProduto extends JFrame {
@@ -28,15 +29,15 @@ public class JanelaProduto extends JFrame {
 	private JTextField tfTelefone;
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
-	private JanelaHome parente;
 	private JRadioButton rdSobremesa;
 	private JLabel lblFornecedor;
 	private JComboBox cbFornecedor;
 
-	public JanelaProduto(JanelaHome parente) {
+	private CtrlProdutos parente;
+
+	public JanelaProduto(CtrlProdutos parente) {
 		this.parente = parente;
-		
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -107,16 +108,17 @@ public class JanelaProduto extends JFrame {
 			btnCadastrar = new JButton("Cadastrar");
 			btnCadastrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					String nome = getTfNome().getText();
 					float preço = Float.parseFloat(getTfTelefone().getText());
-					boolean esobremesa = Boolean.parseBoolean(getRdSobremesa().getText());
-					Fornecedor fornecedor = parente.getCtrlFornecedores().getFornecedor(getCbFornecedor().getSelectedIndex());
-					
-										
-					JOptionPane.showMessageDialog(
-							null,
-							parente.getCtrlProdutos().inserirPrato(nome, preço, esobremesa, fornecedor));
+					boolean esobremesa = Boolean.parseBoolean(getRdSobremesa()
+							.getText());
+					Fornecedor fornecedor = parente
+							.getCtrlFornecedores()
+							.getFornecedor(getCbFornecedor().getSelectedIndex());
+
+					JOptionPane.showMessageDialog(null, parente.inserirPrato(
+							nome, preço, esobremesa, fornecedor));
 				}
 			});
 			btnCadastrar.setBounds(159, 194, 106, 23);
@@ -129,8 +131,7 @@ public class JanelaProduto extends JFrame {
 			btnVoltar = new JButton("Voltar");
 			btnVoltar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JanelaHome janela = parente;
-					janela.setVisible(true);
+					parente.Voltar();
 					dispose();
 				}
 			});
@@ -138,6 +139,7 @@ public class JanelaProduto extends JFrame {
 		}
 		return btnVoltar;
 	}
+
 	private JRadioButton getRdSobremesa() {
 		if (rdSobremesa == null) {
 			rdSobremesa = new JRadioButton("Sobremesa");
@@ -145,6 +147,7 @@ public class JanelaProduto extends JFrame {
 		}
 		return rdSobremesa;
 	}
+
 	private JLabel getLblFornecedor() {
 		if (lblFornecedor == null) {
 			lblFornecedor = new JLabel("Fornecedor:");
@@ -152,19 +155,20 @@ public class JanelaProduto extends JFrame {
 		}
 		return lblFornecedor;
 	}
+
 	private JComboBox getCbFornecedor() {
-		int i;
+
 		if (cbFornecedor == null) {
 			cbFornecedor = new JComboBox();
 			cbFornecedor.setBounds(252, 163, 129, 22);
-			 
-			for (i=0; i < parente.getCtrlFornecedores().getTVetorF(); i++){
-				if(parente.getCtrlFornecedores().getFornecedor(i) != null){
-				cbFornecedor.addItem(parente.getCtrlFornecedores().getFornecedor(i).getNome());
-				
+
+			for (int i = 0; i < parente.getCtrlFornecedores().getTVetorF(); i++) {
+				if (parente.getCtrlFornecedores().getFornecedor(i) != null) {
+					cbFornecedor.addItem(parente.getCtrlFornecedores()
+							.getFornecedor(i).getNome());
+
 				}
 			}
-			
 
 		}
 		return cbFornecedor;

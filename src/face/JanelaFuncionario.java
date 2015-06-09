@@ -32,8 +32,9 @@ public class JanelaFuncionario extends JFrame {
 	private JTextField tfEndereco;
 	private JButton btnCadastrar;
 	private JButton btnVoltar;
-	private JanelaHome parente;
 	private JComboBox cbCargo;
+
+	private CtrlFuncionario parente;
 
 	/**
 	 * Launch the application.
@@ -42,7 +43,7 @@ public class JanelaFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaFuncionario(JanelaHome parente) {
+	public JanelaFuncionario(CtrlFuncionario parente) {
 		this.parente = parente;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,7 +67,7 @@ public class JanelaFuncionario extends JFrame {
 		contentPane.add(getBtnCadastrar());
 		contentPane.add(getBtnVoltar());
 		contentPane.add(getCbCargo());
-		
+
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 	}
@@ -168,33 +169,26 @@ public class JanelaFuncionario extends JFrame {
 					String data = tfData.getText();
 					String telefone = tfData.getText();
 					String endereco = tfEndereco.getText();
-					String msg;
+					String msg = "";
 
 					if (cbCargo.getSelectedItem().equals("Atendente")) {
-						JOptionPane.showMessageDialog(
-								null,
-								parente.getCtrlFuncionario()
-										.inserirFuncionario('a', nome,
-												data, telefone,
-												endereco, "Atendente"));
+						msg = parente.inserirFuncionario(nome, data, telefone,
+								endereco, "Atendente");
 
 					} else if (cbCargo.getSelectedItem().equals("Entregador")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario(
-								'e', nome, data, telefone, endereco,
-								"Entregador");
-						JOptionPane.showMessageDialog(null, msg);
-					} else if (cbCargo.getSelectedItem().equals("Cozinheiro")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario(
-								'c', nome, data, telefone, endereco,
-								"Cozinheiro");
-						JOptionPane.showMessageDialog(null, msg);
-					} else if (cbCargo.getSelectedItem().equals("Garcom")) {
-						msg = parente.getCtrlFuncionario().inserirFuncionario(
-								'g', nome, data, telefone, endereco,
-								"Garcom");
-						JOptionPane.showMessageDialog(null, msg);
-					}
+						msg = parente.inserirFuncionario(nome, data, telefone,
+								endereco, "Entregador");
 
+					} else if (cbCargo.equals("Cozinheiro")) {
+						msg = parente.inserirFuncionario(nome, data, telefone,
+								endereco, "Cozinheiro");
+
+					} else if (cbCargo.getSelectedItem().equals("Garçom")) {
+						msg = parente.inserirFuncionario(nome, data, telefone,
+								endereco, "Garçom");
+
+					}
+					JOptionPane.showMessageDialog(null, msg);
 				}
 			});
 			btnCadastrar.setBounds(106, 238, 96, 23);
@@ -208,8 +202,7 @@ public class JanelaFuncionario extends JFrame {
 			btnVoltar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 
-					JanelaHome janela = parente;
-					janela.setVisible(true);
+					parente.Voltar();
 					dispose();
 
 				}
@@ -223,7 +216,7 @@ public class JanelaFuncionario extends JFrame {
 		if (cbCargo == null) {
 			cbCargo = new JComboBox();
 			cbCargo.setModel(new DefaultComboBoxModel(new String[] {
-					"Atendente", "Entregador", "Cozinheiro", "Garcom" }));
+					"Atendente", "Entregador", "Cozinheiro", "Garçom" }));
 			cbCargo.setBounds(110, 192, 92, 23);
 		}
 		return cbCargo;
