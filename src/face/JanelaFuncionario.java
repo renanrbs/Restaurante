@@ -179,9 +179,8 @@ public class JanelaFuncionario extends JFrame {
 						msg = parente.inserirFuncionario(nome, data, telefone,
 								endereco, "Entregador");
 
-					} else if (cbCargo.equals("Cozinheiro")) {
-						msg = parente.inserirFuncionario(nome, data, telefone,
-								endereco, "Cozinheiro");
+					} else if (cbCargo.getSelectedItem().equals("Cozinheiro")) {
+						msg = parente.inserirFuncionario(nome, data, telefone, endereco, "Cozinheiro");
 
 					} else if (cbCargo.getSelectedItem().equals("Garçom")) {
 						msg = parente.inserirFuncionario(nome, data, telefone,

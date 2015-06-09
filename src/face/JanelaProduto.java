@@ -162,7 +162,7 @@ public class JanelaProduto extends JFrame {
 			cbFornecedor = new JComboBox();
 			cbFornecedor.setBounds(252, 163, 129, 22);
 
-			for (int i = 0; i < parente.getCtrlFornecedores().getTVetorF(); i++) {
+			for (int i = 0; i <= parente.getCtrlFornecedores().getTVetorF(); i++) {
 				if (parente.getCtrlFornecedores().getFornecedor(i) != null) {
 					cbFornecedor.addItem(parente.getCtrlFornecedores()
 							.getFornecedor(i).getNome());
