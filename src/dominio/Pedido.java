@@ -5,15 +5,14 @@ public class Pedido {
 	private int codigo;
 	private static int proxCodigo = 0;
 	private float preco;
-	private Produto[] produto;
+	private Itens[] item;
 	private Funcionario cozinheiro;
 
 	public Pedido(Funcionario Funcionario) {
-		proxCodigo ++;
+		proxCodigo++;
 		this.codigo = proxCodigo;
 		this.cozinheiro = Funcionario;
-		
-		this.produto = new Produto[3];
+		this.item = new Itens[3];
 	}
 
 	public Funcionario getCozinheiro() {
@@ -28,21 +27,25 @@ public class Pedido {
 		return codigo;
 	}
 
-
-	public void InserirProduto(Produto produto) {
-		for (int i = 0; i < this.produto.length; i++) {
-			if (this.produto[i] == null) {
-				this.produto[i] = produto;
+	public String InserirItem(Itens item) {
+		int i;
+		for (i = 0; i < this.item.length; i++) {
+			if (this.item[i] == null) {
 				break;
 			}
 		}
+		if (i >= this.item.length)
+			return "vetor de itens lotado";
+
+		this.item[i] = item;
+		return "Item inserido";
 	}
 
-	public String getProdutos() {
+	public String getItens() {
 		String produtos = "";
-		for (int i = 0; i < this.produto.length; i++) {
-			if (this.produto[i] != null) {
-				produtos += this.produto[i].getNome() + "\n";
+		for (int i = 0; i < this.item.length; i++) {
+			if (this.item[i] != null) {
+				produtos += this.item[i].getNome() + "\n";
 			}
 		}
 		return produtos;
@@ -50,9 +53,9 @@ public class Pedido {
 
 	public float calcularPreço() {
 		this.preco = 0;
-		for (int i = 0; i < this.produto.length; i++) {
-			if (this.produto[i] != null) {
-				this.preco += produto[i].getPreço();
+		for (int i = 0; i < this.item.length; i++) {
+			if (this.item[i] != null) {
+				this.preco += item[i].calcularPreçoItem();
 			}
 
 		}
